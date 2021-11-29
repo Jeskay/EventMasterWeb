@@ -1,0 +1,14 @@
+{
+  "name": "eventmasterweb",
+  "version": "0.0.1",
+  "description": "Website for EventMaster",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jeskay",
+  "license": "MIT",
+  "dependencies": {
+    "whatwg-url": "^11.0.0"
+  }
+}
