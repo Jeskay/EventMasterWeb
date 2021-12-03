@@ -18,11 +18,11 @@
                     <li><h5 class="grey-text text-darken-3" style="padding-left:10px">EventMaster</h5></li>
                 </ul>
                 <ul class="right hide-on-med-and-down ">
-                    <li><a href="https://github.com" class="grey-text text-darken-3">Invite Bot</a></li>
-                    <li class="active"><a href="./" class="grey-text text-darken-3">About</a></li>
-                    <li><a href="./tutorial" class="grey-text text-darken-3">Tutorial</a></li>
+                    <li><a class="grey-text text-darken-3" href="https://discord.com/api/oauth2/authorize?client_id=488973809185980416&permissions=139645676561&scope=bot%20applications.commands">Invite Bot</a></li>
+                    <li class="active"><a class="grey-text text-darken-3" href="./">About</a></li>
+                    <li><a class="grey-text text-darken-3" href="./tutorial">Tutorial</a></li>
                     <li><a class="dropdown-trigger grey-text text-darken-3" href="#!" data-target="dropdown1">Community</a></li>
-                    <li><a class="waves-effect waves-light btn large black">Log in</a></li>
+                    <li><a class="waves-effect waves-light btn large black" href="https://discord.com/api/oauth2/authorize?client_id=488973809185980416&redirect_uri=http%3A%2F%2Flocalhost%3A5000%2F&response_type=token&scope=identify">Log in</a></li>
                 </ul>
             </div>
         </nav>
@@ -36,6 +36,27 @@
                 var elems = document.querySelectorAll('.dropdown-trigger');
                 var instances = M.Dropdown.init(elems);
             });
+        </script>
+        <script>
+            window.onload = () => {
+            const fragment = new URLSearchParams(window.location.hash.slice(1));
+		    const [accessToken, tokenType] = [fragment.get('access_token'), fragment.get('token_type')];
+		    if (!accessToken) {
+		    	return;
+		    }
+
+		    fetch('https://discord.com/api/users/@me', {
+		    	headers: {
+		    		authorization: `${tokenType} ${accessToken}`,
+		    	},
+		    })
+		    	.then(result => result.json())
+		    	.then(response => {
+		    		const { username, discriminator } = response;
+		    		console.log(`name: ${username}#${discriminator}`);
+		    	})
+		    	.catch(console.error);
+            };
         </script>
     </body>
 </html>
