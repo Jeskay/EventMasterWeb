@@ -2,8 +2,10 @@ const http = require('http');
 const {URL} = require('whatwg-url');
 const path = require('path');
 const fs = require('fs');
+const statik = require('@brettz9/node-static');
 
-const routePath = path.join(__dirname, ".", "client");
+const routePath = path.join(__dirname, ".", "client/pages");
+const fileServer = new statik.Server(routePath);
 
 const server = http.createServer((req, res) => {
     const uri = new URL(`http://localhost:5000${req.url}`);
@@ -18,18 +20,7 @@ const server = http.createServer((req, res) => {
             res.end(JSON.stringify(result));
         } else {
             //content requests
-            const path = `${routePath}/pages/${uri.pathname == '/' ? 'index' : req.url}.html`;
-            fs.readFile(path, (error, html) => {
-                if(error) {
-                        console.log(error);
-                        res.writeHead(404, 'Content-Type', 'text/plain');
-                        res.end('Invalid request');
-                } else {
-                    res.writeHead(200, {ContentType: 'text/html'});
-                    res.write(html);
-                    res.end();
-                }
-            });
+            fileServer.serve(req, res);
         }
         
     })

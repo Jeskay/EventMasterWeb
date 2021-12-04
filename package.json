@@ -9,6 +9,7 @@
   "author": "Jeskay",
   "license": "MIT",
   "dependencies": {
+    "@brettz9/node-static": "github:cloudhead/node-static#8135831",
     "whatwg-url": "^11.0.0"
   }
 }
