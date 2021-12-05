@@ -1,8 +1,7 @@
-<ul id="dropdown1" class="dropdown-content">
-    <li><a class="orange lighten-1" href="#!">Reviews</a></li>
-    <li><a href="#!">Community server</a></li>
-    <li class="divider"></li>
-    <li><a href="#!">Suggestion/Bug reports</a></li>
+<ul id="dropdown1" class="dropdown-content amber accent=1">
+    <li><a class="grey-text text-darken-3" href="#!">Reviews</a></li>
+    <li><a class="grey-text text-darken-3" href="./">Community server</a></li>
+    <li><a class="grey-text text-darken-3" href="#!">Suggestion/Bug reports</a></li>
   </ul> 
 <nav>
     <div class="nav-wrapper amber accent=1">
@@ -15,8 +14,7 @@
             <li><a class="grey-text text-darken-3" href="./">About</a></li>
             <li><a class="grey-text text-darken-3" href="./tutorial.html">Tutorial</a></li>
             <li><a class="dropdown-trigger grey-text text-darken-3" href="#!" data-target="dropdown1">Community</a></li>
-            <li id="avatar_item" style="display: none"><img id="user_avatar" class="circle responsive-img"></img></li>
-            <li id="profile_item" style="display: none"><a class="grey-text text-darken-3" href="./profile.html">Profile</a></li>
+            <li id="avatar_item" style="display: none;"><a href="./index.html"><img id="user_avatar"  class="circle responsive-img" style="max-width: 40px; max-height: 40px;"></img></a></li>
             <li id="login_btn"><a class="waves-effect waves-light btn large black" href="https://discord.com/api/oauth2/authorize?client_id=488973809185980416&redirect_uri=http%3A%2F%2Flocalhost%3A5000%2F&response_type=token&scope=identify">Log in</a></li>
         </ul>
     </div>
@@ -24,6 +22,6 @@
 <script>
     $(document).ready(function(){
         console.log('ready');
-        $('.dropdown-trigger').dropdown();    
+        $('.dropdown-trigger').dropdown({hover: true, constrainWidth: false, coverTrigger: false});    
     });
 </script>

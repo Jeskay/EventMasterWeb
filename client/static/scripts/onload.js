@@ -6,9 +6,9 @@ function onLoad(){
 		const avatar = localStorage.getItem('user_avatar');
 		if(!avatar) return;
 		document.getElementById('avatar_item').style.display = 'block';
-		document.getElementById('user_avatar').src = avatar;
+		const av_element = document.getElementById('user_avatar');
+		av_element.src = avatar;
 
-		document.getElementById('profile_item').style.display = 'block';
 		document.getElementById('login_btn').style.display = 'none';
 		return;
 	}
@@ -26,6 +26,7 @@ function onLoad(){
 			localStorage.setItem('username', username);
 			localStorage.setItem('user_avatar', `https://cdn.discordapp.com/avatars/${id}/${avatar}.png`);
 			localStorage.setItem('user_discriminator', discriminator);
+			window.location.assign("./");
 		})
 		.catch(console.error);
 }
