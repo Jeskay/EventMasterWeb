@@ -1,0 +1,29 @@
+<ul id="dropdown1" class="dropdown-content">
+    <li><a class="orange lighten-1" href="#!">Reviews</a></li>
+    <li><a href="#!">Community server</a></li>
+    <li class="divider"></li>
+    <li><a href="#!">Suggestion/Bug reports</a></li>
+  </ul> 
+<nav>
+    <div class="nav-wrapper amber accent=1">
+        <ul class="left med-and-down">
+            <li><img src="https://i.ibb.co/hBCDxDC/64x64-logo.jpg"  class="circle responsive-img" style="padding-top: 1px;padding-left: 5px;"></img></li>
+            <li><h5 class="grey-text text-darken-3" style="padding-left:10px">EventMaster</h5></li>
+        </ul>
+        <ul class="right hide-on-med-and-down ">
+            <li><a class="grey-text text-darken-3" href="https://discord.com/api/oauth2/authorize?client_id=488973809185980416&permissions=139645676561&scope=bot%20applications.commands">Invite Bot</a></li>
+            <li><a class="grey-text text-darken-3" href="./">About</a></li>
+            <li><a class="grey-text text-darken-3" href="./tutorial.html">Tutorial</a></li>
+            <li><a class="dropdown-trigger grey-text text-darken-3" href="#!" data-target="dropdown1">Community</a></li>
+            <li id="avatar_item" style="display: none"><img id="user_avatar" class="circle responsive-img"></img></li>
+            <li id="profile_item" style="display: none"><a class="grey-text text-darken-3" href="./profile.html">Profile</a></li>
+            <li id="login_btn"><a class="waves-effect waves-light btn large black" href="https://discord.com/api/oauth2/authorize?client_id=488973809185980416&redirect_uri=http%3A%2F%2Flocalhost%3A5000%2F&response_type=token&scope=identify">Log in</a></li>
+        </ul>
+    </div>
+</nav>
+<script>
+    $(document).ready(function(){
+        console.log('ready');
+        $('.dropdown-trigger').dropdown();    
+    });
+</script>

@@ -4,7 +4,7 @@ const path = require('path');
 const fs = require('fs');
 const statik = require('@brettz9/node-static');
 
-const routePath = path.join(__dirname, ".", "client/pages");
+const routePath = path.join(__dirname, ".", "client");
 const fileServer = new statik.Server(routePath);
 
 const server = http.createServer((req, res) => {
