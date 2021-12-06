@@ -1,4 +1,4 @@
-function onLoad(){
+function fetch_header(){
 	console.log("loaded");
 	const fragment = new URLSearchParams(window.location.hash.slice(1));
 	const [accessToken, tokenType] = [fragment.get('access_token'), fragment.get('token_type')];
@@ -6,8 +6,7 @@ function onLoad(){
 		const avatar = localStorage.getItem('user_avatar');
 		if(!avatar) return;
 		document.getElementById('avatar_item').style.display = 'block';
-		const av_element = document.getElementById('user_avatar');
-		av_element.src = avatar;
+		document.getElementById('user_avatar').src = avatar;
 
 		document.getElementById('login_btn').style.display = 'none';
 		return;
@@ -30,7 +29,4 @@ function onLoad(){
 		})
 		.catch(console.error);
 }
-window.onload = () => {
-	console.log("onload");
-	onLoad();
-};
+fetch_header();
