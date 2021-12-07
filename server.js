@@ -3,6 +3,22 @@ const {URL} = require('whatwg-url');
 const path = require('path');
 const fs = require('fs');
 const statik = require('@brettz9/node-static');
+const {Client} = require('pg');
+require('dotenv').config();
+
+const client = new Client({
+    host: process.env.DB_HOST || 'localhost',
+    user: process.env.DB_USER || 'postgres',
+    password: proces.env.DB_PASSWORD || 'postgres',
+    port: process.env.DB_PORT || '5432'
+});
+client.connect(err => {
+    if (err) {
+        console.error(err);
+    } else {
+        console.log('connected to database');
+    }
+});
 
 const routePath = path.join(__dirname, ".", "client");
 const fileServer = new statik.Server(routePath);
