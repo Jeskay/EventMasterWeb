@@ -6,12 +6,12 @@ const statik = require('@brettz9/node-static');
 const {Client} = require('pg');
 require('dotenv').config();
 
+process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = 0;
 const client = new Client({
-    host: process.env.DB_HOST || 'localhost',
-    user: process.env.DB_USER || 'postgres',
-    password: proces.env.DB_PASSWORD || 'postgres',
-    port: process.env.DB_PORT || '5432'
+    connectionString: process.env.CONNECTION,
+    ssl: true
 });
+
 client.connect(err => {
     if (err) {
         console.error(err);
@@ -32,8 +32,13 @@ const server = http.createServer((req, res) => {
         //API requests
         if(parsed[1] == "api"){
             const {command} = require(`${__dirname}${uri.pathname}.js`);
-            const result = command(req, body, res);
-            res.end(JSON.stringify(result));
+            command(client, req, body, res)
+            .then(result => {
+                res.end(JSON.stringify(result));
+            })
+            .catch(err => {
+                res.end(JSON.stringify(err));
+            });
         } else {
             //content requests
             fileServer.serve(req, res);

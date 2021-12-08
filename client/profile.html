@@ -23,7 +23,7 @@
                 <div class="card-content">
                     <div class="row" style="font-size: large;">
                         <div class="col s12"><p>Talk is cheap, show me your code</p></div>
-                        <div class="col s6 offset-s6"><p>@Linus Torvalds</p></div>
+                        <div class="col s6 offset-s6"><p id="username">@Linus Torvalds</p></div>
                     </div>
                 </div>
               </div>
@@ -36,5 +36,17 @@
                   </ul>
         </div>
         <!--Jquery scripts-->
+        <script>
+            $(document).ready(function(){
+                console.log('ready');
+                $.getScript( "static/scripts/fetchprofile.js")
+                    .done(function( script, textStatus ) {
+                        console.log( textStatus );
+                    })
+                    .fail(function( jqxhr, settings, exception ) {
+                       console.log(exception);
+                });    
+            });
+        </script>
     </body>
 </html>

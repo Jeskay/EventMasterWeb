@@ -17,16 +17,16 @@ function fetch_header(){
 			authorization: `${tokenType} ${accessToken}`,
 		},
 	})
-		.then(result => result.json())
-		.then(response => {
-			const { id, username, discriminator, avatar } = response;
-			console.log(`${username}#${discriminator}`);
-			localStorage.setItem('user_id', id);
-			localStorage.setItem('username', username);
-			localStorage.setItem('user_avatar', `https://cdn.discordapp.com/avatars/${id}/${avatar}.png`);
-			localStorage.setItem('user_discriminator', discriminator);
-			window.location.assign("./");
-		})
-		.catch(console.error);
+	.then(result => result.json())
+	.then(response => {
+		const { id, username, discriminator, avatar } = response;
+		console.log(`${username}#${discriminator}`);
+		localStorage.setItem('user_id', id);
+		localStorage.setItem('username', username);
+		localStorage.setItem('user_avatar', `https://cdn.discordapp.com/avatars/${id}/${avatar}.png`);
+		localStorage.setItem('user_discriminator', discriminator);
+		window.location.assign("./");
+	})
+	.catch(console.error);
 }
 fetch_header();
