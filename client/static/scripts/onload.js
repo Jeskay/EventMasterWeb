@@ -19,12 +19,13 @@ function fetch_header(){
 	})
 	.then(result => result.json())
 	.then(response => {
-		const { id, username, discriminator, avatar } = response;
+		const { id, username, discriminator, avatar, accent_color } = response;
 		console.log(`${username}#${discriminator}`);
 		localStorage.setItem('user_id', id);
 		localStorage.setItem('username', username);
 		localStorage.setItem('user_avatar', `https://cdn.discordapp.com/avatars/${id}/${avatar}.png`);
 		localStorage.setItem('user_discriminator', discriminator);
+		localStorage.setItem('user_accent_color', accent_color);
 		window.location.assign("./");
 	})
 	.catch(console.error);

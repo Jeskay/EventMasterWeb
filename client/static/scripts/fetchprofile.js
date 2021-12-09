@@ -23,6 +23,10 @@ function fetchProfile(){
         console.log(data);
         document.getElementById('played_stat').textContent = data.played;
         document.getElementById('hosted_stat').textContent = data.hosted;
+        document.getElementById('likes_stat').textContent = data.likes;
+        document.getElementById('dislikes_stat').textContent = data.dislikes;
+        document.getElementById('score_stat').textContent = data.score ? data.score : 0;
+        document.getElementById('banned_stat').textContent = data.banned;
     })
     .catch(error => console.error(error));
 }
