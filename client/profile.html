@@ -13,28 +13,26 @@
             });
         </script>
     </head>
-    <body class="amber grey darken-3">
+    <body style="min-width: 385px;">
         <div id="header"></div>
         <div class="container">
-            <div class="card horizontal orange lighten-1">
-                <div class="card-image" style="border-radius: 50%; overflow: hidden;">
-                  <img id="avatar_image"  src="https://materializecss.com/images/sample-1.jpg">
-                </div>
-                <div class="card-content">
+            <div class="card-panel">
                     <div class="row" style="font-size: large;">
-                        <div class="col s12"><p>Talk is cheap, show me your code</p></div>
-                        <div class="col s6 offset-s6"><p id="username">@Linus Torvalds</p></div>
+                        <div class="col s4"><img id="avatar_image" class="img-responsive circle"  src="https://materializecss.com/images/sample-1.jpg"></div>
+                        <div class="col s8">
+                            <p>Talk is cheap, show me your code</p>
+                            <p id="username">@Linus Torvalds</p>
+                        </div>
                     </div>
-                </div>
             </div>
             <ul class="collection with-header">
-                <li class="collection-header orange lighten-1 center"><h3>Statistic</h3></li>
-                <li class="collection-item orange lighten-1"><h4>Events played:</h4><br><h4 id="played_stat"></h4></li>
-                <li class="collection-item orange lighten-1"><h4>Events hosted:</h4><br><h4 id="hosted_stat"></h4></li>
-                <li class="collection-item orange lighten-1"><h4>Liked:</h4><br><h4 id="likes_stat"></h4></li>
-                <li class="collection-item orange lighten-1"><h4>Disliked:</h4><br><h4 id="dislikes_stat"></h4></li>
-                <li class="collection-item orange lighten-1"><h4>Score:</h4><br><h4 id="score_stat"></h4></li>
-                <li class="collection-item orange lighten-1"><h4>Banned:</h4><br><h4 id="banned_stat"></h4></li>
+                <li class="collection-header center"><h3>Statistic</h3></li>
+                <li class="collection-item "><h4>Events played:</h4><br><h4 id="played_stat"></h4></li>
+                <li class="collection-item "><h4>Events hosted:</h4><br><h4 id="hosted_stat"></h4></li>
+                <li class="collection-item "><h4>Liked:</h4><br><h4 id="likes_stat"></h4></li>
+                <li class="collection-item "><h4>Disliked:</h4><br><h4 id="dislikes_stat"></h4></li>
+                <li class="collection-item "><h4>Score:</h4><br><h4 id="score_stat"></h4></li>
+                <li class="collection-item "><h4>Banned:</h4><br><h4 id="banned_stat"></h4></li>
             </ul>
         </div>
         <!--Jquery scripts-->

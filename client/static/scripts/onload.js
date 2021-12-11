@@ -4,11 +4,18 @@ function fetch_header(){
 	const [accessToken, tokenType] = [fragment.get('access_token'), fragment.get('token_type')];
 	if (!accessToken) {
 		const avatar = localStorage.getItem('user_avatar');
-		if(!avatar) return;
+		const username = localStorage.getItem('username');
+		if(!avatar || !username) return;
 		document.getElementById('avatar_item').style.display = 'block';
+		document.getElementById('mobile_profile').style.display = 'block';
+		document.getElementById('mobile_logout').style.display = 'block';
+
+		document.getElementById('mobile_avatar').src = avatar;
+		document.getElementById('mobile_name').textContent = username;
 		document.getElementById('user_avatar').src = avatar;
 
 		document.getElementById('login_btn').style.display = 'none';
+		document.getElementById('mobile_login').style.display = 'none';
 		return;
 	}
 

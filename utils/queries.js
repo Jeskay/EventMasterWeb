@@ -1,7 +1,7 @@
+const format = require('pg-format');
+
 function userQuery(id){
-    return {
-        name: 'userQuery',
-        text: `
+    return format(`
         SELECT 
 	    id,
 	    "eventsPlayed",
@@ -14,19 +14,17 @@ function userQuery(id){
 	    	COUNT("subjectId")
 	    	FROM player
 	    	LEFT JOIN commend ON player.id = "subjectId" AND cheer
-	    	WHERE player.id = $1
+	    	WHERE player.id = id
 	    ) AS likes,
 	    (
 	    	SELECT 
 	    	COUNT("subjectId")
 	    	FROM player
 	    	LEFT JOIN commend ON player.id = "subjectId" AND NOT cheer
-	    	WHERE player.id = $1
+	    	WHERE player.id = id
 	    ) AS dislikes
-        FROM player WHERE player.id = $1
-        `,
-        values: [id]
-    }
+        FROM player WHERE player.id = %L`,
+		id);
 }
 
 module.exports = {userQuery}

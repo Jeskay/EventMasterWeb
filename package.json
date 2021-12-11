@@ -12,6 +12,7 @@
     "@brettz9/node-static": "github:cloudhead/node-static#8135831",
     "dotenv": "^10.0.0",
     "pg": "^8.7.1",
+    "pg-format": "^1.0.4",
     "whatwg-url": "^11.0.0"
   }
 }

@@ -1,14 +1,15 @@
-<ul id="dropdown1" class="dropdown-content amber accent=1">
+<ul id="dropdown1" class="dropdown-content">
     <li><a class="grey-text text-darken-3" href="#!">Reviews</a></li>
     <li><a class="grey-text text-darken-3" href="./">Community server</a></li>
     <li><a class="grey-text text-darken-3" href="#!">Suggestion/Bug reports</a></li>
   </ul> 
 <nav>
-    <div class="nav-wrapper amber accent=1">
+    <div class="nav-wrapper">
         <ul class="left med-and-down">
             <li><img src="https://i.ibb.co/hBCDxDC/64x64-logo.jpg"  class="circle responsive-img" style="padding-top: 1px;padding-left: 5px;"></img></li>
             <li><h5 class="grey-text text-darken-3" style="padding-left:10px">EventMaster</h5></li>
         </ul>
+        <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="material-icons">menu</i></a>
         <ul class="right hide-on-med-and-down ">
             <li><a class="grey-text text-darken-3" href="https://discord.com/api/oauth2/authorize?client_id=488973809185980416&permissions=139645676561&scope=bot%20applications.commands">Invite Bot</a></li>
             <li><a class="grey-text text-darken-3" href="./">About</a></li>
@@ -19,6 +20,23 @@
         </ul>
     </div>
 </nav>
+<ul class="sidenav" id="mobile-demo">
+    <li id="mobile_profile" style="display: none"><div class="user-view">
+        <div class="background"></div>
+        <a href="./profile.html"><img id="mobile_avatar" class="circle"></a>
+        <a href="./profile.html"><span id="mobile_name" class="black-text name"></span></a>
+    </div></li>
+    <li><div class="divider"></div></li>
+    <li><a href="./">About</a></li>
+    <li><a href="https://discord.com/api/oauth2/authorize?client_id=488973809185980416&permissions=139645676561&scope=bot%20applications.commands">Invite Bot</a></li>
+    <li><a href="./tutorial.html">Tutorial</a></li>
+    <li><a href="./reviews.html">Reviews</a></li>
+    <li><a href="./">Community server</a></li>
+    <li><a href="./">Suggestion/Bug reports</a></li>
+    <li><div class="divider"></div></li>
+    <li id="mobile_login"><a href="https://discord.com/api/oauth2/authorize?client_id=488973809185980416&redirect_uri=http%3A%2F%2Flocalhost%3A5000%2F&response_type=token&scope=identify">Log in</a></li>
+    <li id="mobile_logout" style="display: none;"><a>Log out<i class="material-icons right">exit_to_app</i></a></li>
+  </ul>
 <script>
     $(document).ready(function(){
         $.getScript( "static/scripts/onload.js")
@@ -28,6 +46,7 @@
             .fail(function( jqxhr, settings, exception ) {
                console.log(exception);
         });
-        $('.dropdown-trigger').dropdown({hover: true, constrainWidth: false, coverTrigger: false, autoTrigger: false});    
+        $('.dropdown-trigger').dropdown({hover: true, constrainWidth: false, coverTrigger: false, autoTrigger: false});
+        $('.sidenav').sidenav({edge: 'right'});    
     });
 </script>
