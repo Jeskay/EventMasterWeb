@@ -27,4 +27,18 @@ function userQuery(id){
 		id);
 }
 
-module.exports = {userQuery}
+function reviewsQuery(){
+	return format(`
+	SELECT * FROM public.review
+	ORDER BY "createdAt" DESC 
+	`);
+}
+
+function postreviewQuery(text, score, author){
+	return format(`
+	INSERT INTO review (text, score, "createdAt", "authorId") VALUES (%L, %L, NOW()::timestamp, %L) 
+	ON CONFLICT DO NOTHING
+	`,text, score, author);
+}
+
+module.exports = {userQuery, reviewsQuery, postreviewQuery}
