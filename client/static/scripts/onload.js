@@ -1,8 +1,8 @@
 function fetch_header(){
 	console.log("loaded");
-	const fragment = new URLSearchParams(window.location.hash.slice(1));
-	const [accessToken, tokenType] = [fragment.get('access_token'), fragment.get('token_type')];
-	if (!accessToken) {
+	const urlParams = new URLSearchParams(window.location.search);
+	const code = urlParams.get("code");
+	if (!code) {
 		const avatar = localStorage.getItem('user_avatar');
 		const username = localStorage.getItem('username');
 		if(!avatar || !username) return;
@@ -19,15 +19,22 @@ function fetch_header(){
 		return;
 	}
 
-	fetch('https://discord.com/api/users/@me', {
-		headers: {
-			authorization: `${tokenType} ${accessToken}`,
-		},
+	fetch('./api/login', {
+			method: 'POST',
+			mode: 'cors',
+			cache: 'default',
+			credentials: 'same-origin',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			redirect: 'follow',
+			body: JSON.stringify({code: code})
 	})
 	.then(result => result.json())
 	.then(response => {
-		const { id, username, discriminator, avatar, accent_color } = response;
+		const { jwt, id, username, discriminator, avatar, accent_color } = response;
 		console.log(`${username}#${discriminator}`);
+		localStorage.setItem('token', jwt);
 		localStorage.setItem('user_id', id);
 		localStorage.setItem('username', username);
 		localStorage.setItem('user_avatar', `https://cdn.discordapp.com/avatars/${id}/${avatar}.png`);
@@ -35,6 +42,5 @@ function fetch_header(){
 		localStorage.setItem('user_accent_color', accent_color);
 		window.location.assign("./");
 	})
-	.catch(console.error);
 }
 fetch_header();
