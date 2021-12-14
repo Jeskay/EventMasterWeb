@@ -3,6 +3,7 @@ function fetchProfile(){
     const id = localStorage.getItem('user_id');
     const avatar = localStorage.getItem('user_avatar');
     const username = localStorage.getItem('username');
+    const token = localStorage.getItem('token');
     
     document.getElementById('avatar_image').src = avatar;
     document.getElementById('username').textContent = username;
@@ -16,7 +17,7 @@ function fetchProfile(){
             'Content-Type': 'application/json'
         },
         redirect: 'follow',
-        body: JSON.stringify({id: id})
+        body: JSON.stringify({id: id, token: token})
     })
     .then(response => response.json())
     .then(data => {

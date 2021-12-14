@@ -36,6 +36,6 @@ function loadReviews(){
             createReview(data[i].text, data[i].score);
         }
     })
-    .catch(console.log(error));
+    .catch(error => console.log(error));
 }
 loadReviews();

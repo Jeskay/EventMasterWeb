@@ -20,8 +20,32 @@
                 <div class="indeterminate"></div>
             </div>
         </div>
+        <div class="fixed-action-btn">
+            <button class="btn-floating btn-large green modal-trigger" data-target="modal1"><i class="large material-icons">add</i></button>
+        </div>
+        <div id="modal1" class="modal">
+            <div class="modal-content">
+                <div class="row valign-wrapper">
+                    <div class="col s2"> 
+                        <img class="circle img-responsive" src="https://i.ibb.co/hBCDxDC/64x64-logo.jpg">
+                    </div>
+                    <div class="input-field col s10">
+                        <i class="material-icons prefix">textsms</i>
+                        <textarea id="textarea2" class="materialize-textarea" data-length="500"></textarea>
+                        <label for="textarea2">Text</label>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn waves-effect waves-light modal-close" type="submit" name="action">Submit
+                    <i class="material-icons right">send</i>
+                </button>
+            </div>
+        </div>
         <script>
             $(document).ready(function(){
+                $('.modal').modal();
+                $('textarea#textarea2').characterCounter();
                 $.getScript("static/scripts/loadreviews.js")
                 .done(function( script, textStatus ) {
                     $('.progress').remove();

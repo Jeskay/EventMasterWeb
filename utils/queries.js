@@ -1,6 +1,6 @@
 const format = require('pg-format');
 
-export function userQuery(id){
+function userQuery(id){
     return format(`
         SELECT 
 	    id,
@@ -27,17 +27,18 @@ export function userQuery(id){
 		id);
 }
 
-export function reviewsQuery(){
+function reviewsQuery(){
 	return format(`
 	SELECT * FROM public.review
 	ORDER BY "createdAt" DESC 
 	`);
 }
 
-export function postreviewQuery(text, score, author){
+function postreviewQuery(text, score, author){
 	return format(`
 	INSERT INTO review (text, score, "createdAt", "authorId") VALUES (%L, %L, NOW()::timestamp, %L) 
 	ON CONFLICT DO NOTHING
 	`,text, score, author);
 }
 
+module.exports = {userQuery, reviewsQuery, postreviewQuery}
