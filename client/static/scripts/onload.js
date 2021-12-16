@@ -32,9 +32,10 @@ function fetch_header(){
 	})
 	.then(result => result.json())
 	.then(response => {
-		const { jwt, id, username, discriminator, avatar, accent_color } = response;
+		const { jwt, id, username, discriminator, avatar, accent_color, credentials } = response;
 		console.log(`${username}#${discriminator}`);
 		localStorage.setItem('token', jwt);
+		localStorage.setItem('credentials', credentials);
 		localStorage.setItem('user_id', id);
 		localStorage.setItem('username', username);
 		localStorage.setItem('user_avatar', `https://cdn.discordapp.com/avatars/${id}/${avatar}.png`);

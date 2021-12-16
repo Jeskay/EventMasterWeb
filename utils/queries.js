@@ -34,11 +34,23 @@ function reviewsQuery(){
 	`);
 }
 
-function postreviewQuery(text, score, author){
+function postreviewQuery(text, avatar, username, author){
 	return format(`
-	INSERT INTO review (text, score, "createdAt", "authorId") VALUES (%L, %L, NOW()::timestamp, %L) 
+	INSERT INTO review (text, avatar, "name", "createdAt", "authorId") VALUES (%L, %L, %L, NOW()::timestamp, %L) 
 	ON CONFLICT DO NOTHING
-	`,text, score, author);
+	`,text, avatar, username, author);
+}
+function getReviewQuery(authorId) {
+	return format(`
+	SELECT * FROM public.review
+	WHERE "authorId" = %L
+	`, authorId);
+}
+function removeReviewQuery(authorId) {
+	return format(`
+	DELETE FROM review
+	WHERE "authorId" = %L
+	`, authorId);
 }
 
-module.exports = {userQuery, reviewsQuery, postreviewQuery}
+module.exports = {userQuery, reviewsQuery, postreviewQuery, getReviewQuery, removeReviewQuery};

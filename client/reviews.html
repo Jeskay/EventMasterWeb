@@ -19,6 +19,8 @@
             <div class="progress">
                 <div class="indeterminate"></div>
             </div>
+            <ul id="review_collection" class="collection">
+            </ul>
         </div>
         <div class="fixed-action-btn">
             <button class="btn-floating btn-large green modal-trigger" data-target="modal1"><i class="large material-icons">add</i></button>
@@ -37,7 +39,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button class="btn waves-effect waves-light modal-close" type="submit" name="action">Submit
+                <button id="submit_btn" class="btn waves-effect waves-light modal-close" type="submit" name="action">Submit
                     <i class="material-icons right">send</i>
                 </button>
             </div>
@@ -45,15 +47,37 @@
         <script>
             $(document).ready(function(){
                 $('.modal').modal();
+                $('#submit_btn').click(function() {
+                    $.getScript("static/scripts/submitreview.js")
+                    .done(function( script, textStatus ) {
+                        console.log("reviews loaded");
+                    })
+                    .fail(function( jqxhr, settings, exception ) {
+                        console.log(exception);
+                    });
+                });
+                $('textarea#textarea2').on('input', function() {
+                    const length = $(this).val().length;
+                    if(length > 500) $('#submit_btn').addClass('disabled');
+                    else $('#submit_btn').removeClass('disabled');
+                });
                 $('textarea#textarea2').characterCounter();
                 $.getScript("static/scripts/loadreviews.js")
                 .done(function( script, textStatus ) {
                     $('.progress').remove();
-                    console.log( textStatus );
+                    if(localStorage.getItem('credentials') == 'admin') 
+                        $.getScript("static/scripts/removereview.js")
+                        .done(function( script, textStatus ) {
+                            console.log( "remove button loaded" );
+                        })
+                        .fail(function( jqxhr, settings, exception ) {
+                            console.log(exception);
+                        });
                 })
                 .fail(function( jqxhr, settings, exception ) {
                     console.log(exception);
                 });
+                
             });
         </script>
     </body>

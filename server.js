@@ -34,9 +34,11 @@ const server = http.createServer((req, res) => {
             const {command} = require(`${__dirname}${uri.pathname}.js`);
             command(client, req, body, res)
             .then(result => {
+                res.statusCode = 200;
                 res.end(JSON.stringify(result));
             })
             .catch(err => {
+                res.statusCode = 400;
                 res.end(JSON.stringify(err));
             });
         } else {

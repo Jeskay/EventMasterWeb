@@ -47,6 +47,14 @@
                console.log(exception);
         });
         $('.dropdown-trigger').dropdown({hover: true, constrainWidth: false, coverTrigger: false, autoTrigger: false});
-        $('.sidenav').sidenav({edge: 'right'});    
+        $('.sidenav').sidenav({edge: 'right'});
+        $('#mobile_logout').click(function(){
+            localStorage.clear();
+            window.location.reload();
+        });
+        $('#mobile_logout').click(function(){
+            localStorage.clear();
+            window.location.reload();
+        });      
     });
 </script>

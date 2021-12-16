@@ -1,22 +1,17 @@
-function createReview(text, score){
+function createReview(text, avatar, username, id){
     const content = `
-    <div class="card-stacked">
-        <div class="card-content">
-          <p>${text}</p>
-          <p>${score}</p>
-        </div>
-    </div>
-    <div class="card-image">
-      <img src="static/images/community_in_discord.jpg">
-    </div>
+    <img src="${avatar}" class="circle">
+    <span class="title">${username}</span>
+    <p>${text}</p>
+    <button id="${id}" class="btn secondary-content"><i class="material-icons">delete</i></button>
     `;
-    const card = Object.assign(document.createElement('div'), {
-        className: 'card horizontal left',
+    const card = Object.assign(document.createElement('li'), {
+        className: 'collection-item avatar',
         innerHTML: content
     });
     const fragment = document.createDocumentFragment();
     fragment.appendChild(card);
-    document.getElementById('container').appendChild(fragment);
+    document.getElementById('review_collection').appendChild(fragment);
 }
 function loadReviews(){
     fetch('./api/getreviews', {
@@ -33,7 +28,7 @@ function loadReviews(){
     .then(data => {
         console.log(data);
         for (let i = 0; i < data.length; i++) {
-            createReview(data[i].text, data[i].score);
+            createReview(data[i].text, data[i].avatar, data[i].name, data[i].authorId);
         }
     })
     .catch(error => console.log(error));

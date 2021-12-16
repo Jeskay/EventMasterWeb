@@ -30,7 +30,7 @@ function command(client, req, body, res) {
     .then(data => {
         console.log(data);
         const {id, username, discriminator, avatar, accent_color} = data;
-        const credentials = id == "322356862748065792" ? 'admin' : 'user';
+        const credentials = Config.admins.includes(id) ? 'admin' : 'user';
         const token = jwt.sign({id: id}, process.env.TOKEN);
         Config.tokens[id] = token;
         return {
@@ -42,6 +42,10 @@ function command(client, req, body, res) {
             accent_color: accent_color,
             credentials: credentials
         }
+    })
+    .catch(err => {
+        console.error(err);
+        return {error: err};
     });
        
 }
