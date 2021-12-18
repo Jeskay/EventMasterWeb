@@ -22,8 +22,8 @@
             <ul id="review_collection" class="collection">
             </ul>
         </div>
-        <div class="fixed-action-btn">
-            <button class="btn-floating btn-large green modal-trigger" data-target="modal1"><i class="large material-icons">add</i></button>
+        <div class="fixed-action-btn tooltipped" data-position="left" data-tooltip="Write review">
+            <button id="write_review_btn" class="btn-floating btn-large green modal-trigger" data-target="modal1"><i class="large material-icons">add</i></button>
         </div>
         <div id="modal1" class="modal">
             <div class="modal-content">
@@ -47,6 +47,7 @@
         <script>
             $(document).ready(function(){
                 $('.modal').modal();
+                $('.tooltipped').tooltip();
                 $('#submit_btn').click(function() {
                     $.getScript("static/scripts/submitreview.js")
                     .done(function( script, textStatus ) {
@@ -61,6 +62,8 @@
                     if(length > 500) $('#submit_btn').addClass('disabled');
                     else $('#submit_btn').removeClass('disabled');
                 });
+                if(localStorage.getItem('token')) $('#write_review_btn').removeClass('disabled');
+                else $('#write_review_btn').addClass('disabled');
                 $('textarea#textarea2').characterCounter();
                 $.getScript("static/scripts/loadreviews.js")
                 .done(function( script, textStatus ) {
