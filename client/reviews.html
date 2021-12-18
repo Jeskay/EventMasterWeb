@@ -29,7 +29,7 @@
             <div class="modal-content">
                 <div class="row valign-wrapper">
                     <div class="col s2"> 
-                        <img class="circle img-responsive" src="https://i.ibb.co/hBCDxDC/64x64-logo.jpg">
+                        <img id="modal_avatar" style="max-width: 64px;" class="circle img-responsive">
                     </div>
                     <div class="input-field col s10">
                         <i class="material-icons prefix">textsms</i>
@@ -62,7 +62,11 @@
                     if(length > 500) $('#submit_btn').addClass('disabled');
                     else $('#submit_btn').removeClass('disabled');
                 });
-                if(localStorage.getItem('token')) $('#write_review_btn').removeClass('disabled');
+                const avatar = localStorage.getItem('user_avatar');
+                if(avatar) {
+                    $('#write_review_btn').removeClass('disabled');
+                    $('#modal_avatar').attr('src', avatar);
+                }
                 else $('#write_review_btn').addClass('disabled');
                 $('textarea#textarea2').characterCounter();
                 $.getScript("static/scripts/loadreviews.js")
