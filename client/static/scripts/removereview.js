@@ -1,9 +1,8 @@
 $('#review_collection').on("click", ".secondary-content" , function(event){
     console.log('clicked');
-    console.log(event);
     const id = localStorage.getItem('user_id');
     const token = localStorage.getItem('token');
-    const removed = event.target.id;
+    var removed = event.currentTarget.id;
     fetch('./api/removereview', {
         method: 'POST',
         mode: 'cors',
