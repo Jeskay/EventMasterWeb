@@ -23,7 +23,7 @@
             </ul>
         </div>
         <div class="fixed-action-btn tooltipped" data-position="left" data-tooltip="Write review">
-            <button id="write_review_btn" class="btn-floating btn-large green modal-trigger" data-target="modal1"><i class="large material-icons">add</i></button>
+            <button id="write_review_btn" class="btn-floating btn-large green modal-trigger" data-target="modal1"><i id="review_icon" class="large material-icons">add</i></button>
         </div>
         <div id="modal1" class="modal">
             <div class="modal-content">
@@ -48,43 +48,21 @@
             $(document).ready(function(){
                 $('.modal').modal();
                 $('.tooltipped').tooltip();
-                $('#submit_btn').click(function() {
-                    $.getScript("static/scripts/submitreview.js")
-                    .done(function( script, textStatus ) {
-                        console.log("reviews loaded");
-                    })
-                    .fail(function( jqxhr, settings, exception ) {
-                        console.log(exception);
-                    });
-                });
-                $('textarea#textarea2').on('input', function() {
-                    const length = $(this).val().length;
-                    if(length > 500) $('#submit_btn').addClass('disabled');
-                    else $('#submit_btn').removeClass('disabled');
-                });
                 const avatar = localStorage.getItem('user_avatar');
                 if(avatar) {
                     $('#write_review_btn').removeClass('disabled');
                     $('#modal_avatar').attr('src', avatar);
                 }
                 else $('#write_review_btn').addClass('disabled');
-                $('textarea#textarea2').characterCounter();
                 $.getScript("static/scripts/loadreviews.js")
                 .done(function( script, textStatus ) {
                     $('.progress').remove();
-                    if(localStorage.getItem('credentials') == 'admin') 
-                        $.getScript("static/scripts/removereview.js")
-                        .done(function( script, textStatus ) {
-                            console.log( "remove button loaded" );
-                        })
-                        .fail(function( jqxhr, settings, exception ) {
-                            console.log(exception);
-                        });
+                    if(localStorage.getItem('credentials') == 'admin') $.getScript("static/scripts/removereview.js");
                 })
                 .fail(function( jqxhr, settings, exception ) {
                     console.log(exception);
                 });
-                
+                $('textarea#textarea2').characterCounter();
             });
         </script>
     </body>

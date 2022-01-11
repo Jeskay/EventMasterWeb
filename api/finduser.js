@@ -9,6 +9,7 @@ function command(client, req, body, res) {
             reject({error: 'Invalid token'});
         client.query(userQuery(id))
         .then(result => {
+            if(!result.rows[0]) reject({error: 'User not found'});
             const {id, eventsPlayed, eventsHosted, score, banned, minutesPlayed, likes, dislikes} = result.rows[0];
             resolve({
                 id: id,

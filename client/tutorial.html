@@ -26,7 +26,105 @@
                 <div class="card-reveal">
                     <span class="card-title flow-text">Inviting the bot<i class="material-icons right">close</i></span>
                     <p class="flow-text">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        You can find invite link right on the navigation bar from our website or click "Add to Server" button in the bot's profile.
+                        Make sure you give the bot all necessary permissions to create and modify channels as well as to create slash commands. Otherwise, you won't be able to use it.
+                    </p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-image">
+                    <img class="activator" src="static/images/Bot_Settings.JPG">
+                </div>
+                <div class="card-content">
+                    <span class="card-title activator">Setting the bot up<i class="material-icons medium right">arrow_drop_up</i></span>
+                </div>
+                <div class="card-reveal">
+                    <span class="card-title flow-text">Setting the bot up<i class="material-icons right">close</i></span>
+                    <span class="flow-text">
+                        <p>First of all players need a room to play.
+                            Use command <code>/owner setup</code> to select category where bot will create voice and text channels for players and voice channel where people will join to initiate an event.
+                            That&#39;s minimum setting you can start with.
+                            However, settings are not limited to the command above.<br>
+                            <code>/owner limit_events</code> - to set max amount of events allowed for creation at the same time.<br>
+                            <code>/owner limit_votes</code> - to set minimum amount of votes for single user to be elected as a host.<br>
+                            <code>/owner event_role</code> - to set role which will be notified when new event is hosted at the server.<br>
+                            <code>/owner logging</code> - to set channel where bot will information about actions related to events.<br>
+                            <code>/owner notifications</code> - to set channel where bot will publish notifications about events.<br>
+                            <code>/owner set_admin</code> - to give a user permissions to block and unblock users from joining events.<br>
+                            <code>/owner remove_admin</code> - to remove the privileges described in previous command.</p>    
+                    </span>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-image">
+                    <img class="activator" src="static/images/Bot_Invitation.JPG">
+                </div>
+                <div class="card-content">
+                    <span class="card-title activator">Electing the host<i class="material-icons medium right">arrow_drop_up</i></span>
+                </div>
+                <div class="card-reveal">
+                    <span class="card-title flow-text">Electing the host<i class="material-icons right">close</i></span>
+                    <p class="flow-text">
+                        When there are enough people, the election will start. Participants can vote for another person to become the host and manange te event. 
+                        There are two options for voting - in EventMaster's DM using <code>/player voteid </code> or in server's chat using <code>/member vote </code>.
+                        Bot will send a message to the event's chat when election is over.
+                    </p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-image">
+                    <img class="activator" src="static/images/Bot_Invitation.JPG">
+                </div>
+                <div class="card-content">
+                    <span class="card-title activator">Managing event<i class="material-icons medium right">arrow_drop_up</i></span>
+                </div>
+                <div class="card-reveal">
+                    <span class="card-title flow-text">Managing event<i class="material-icons right">close</i></span>
+                    <p class="flow-text">
+                        Newly elected host usually performs the following steps:
+                        <code>/host announce</code> - to publish announcement about the event so more people will join the event.
+                        <code>/host start</code> - to start the event and post this information in log channel.
+                        <code>/host finishgame</code> - to end current event, record results and delete the channel
+                        Whenever someone violates server's policy or annoy other users owner and admins can use the bot to block such users from joining events:
+                        <code>/admin block</code> - add user to the blacklist and block him from joining events.
+                        <code>/admin unblock</code> - remove user from the blacklist and allow him to join events.
+                        <code>/admin blacklist </code> - show all users blocked from joining events on this server.
+                    </p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-image">
+                    <img class="activator" src="static/images/Profile.JPG">
+                </div>
+                <div class="card-content">
+                    <span class="card-title activator">Profiles<i class="material-icons medium right">arrow_drop_up</i></span>
+                </div>
+                <div class="card-reveal">
+                    <span class="card-title flow-text">Profiles<i class="material-icons right">close</i></span>
+                    <p class="flow-text">
+                        Every user who participated at least one event has guild profile and global profile data.
+                        <code>/member guildprofile </code> - Shows user profile at the specific server.
+                        <code>/player profile </code> - Shows global profile of the user.
+                        <code>/system rating </code> - Global rating of the most active users.
+                        <code>/member guildprofile </code> - Rating of the most active users on the server.
+                    </p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-image">
+                    <img class="activator" src="static/images/Bot_Invitation.JPG">
+                </div>
+                <div class="card-content">
+                    <span class="card-title activator">Subscriptions<i class="material-icons medium right">arrow_drop_up</i></span>
+                </div>
+                <div class="card-reveal">
+                    <span class="card-title flow-text">Subsciptions<i class="material-icons right">close</i></span>
+                    <p class="flow-text">
+                        To receive notifications about specific events a user must subscribe to it.
+                        Use <code>/system subscribe</code> command to be notified about the event. 
+                        For example, <code>/system subscribe title:chess</code> will notify user when public announcement includes "#chess" string in it.
+                        <code>/system unsubscribe</code> - to remove subscription from your list.
+                        <code>/system subscriptions </code> - shows list of your subscriptions.
                     </p>
                 </div>
             </div>

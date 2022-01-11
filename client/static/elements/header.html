@@ -1,4 +1,4 @@
-<ul id="dropdown1" class="dropdown-content">
+<ul id="dropdown1" class="dropdown-content grey lighten-2">
     <li><a class="grey-text text-darken-3" href="./reviews.html">Reviews</a></li>
     <li><a class="grey-text text-darken-3" href="./">Community server</a></li>
     <li><a class="grey-text text-darken-3" href="#!">Suggestion/Bug reports</a></li>
@@ -46,7 +46,7 @@
             .fail(function( jqxhr, settings, exception ) {
                console.log(exception);
         });
-        $('.dropdown-trigger').dropdown({hover: true, constrainWidth: false, coverTrigger: false, autoTrigger: false});
+        $('.dropdown-trigger').dropdown({hover: false, constrainWidth: false, coverTrigger: false, autoTrigger: false, alignment: 'right'});
         $('.sidenav').sidenav({edge: 'right'});
         $('#mobile_logout').click(function(){
             localStorage.clear();

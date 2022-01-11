@@ -52,5 +52,10 @@ function removeReviewQuery(authorId) {
 	WHERE "authorId" = %L
 	`, authorId);
 }
-
-module.exports = {userQuery, reviewsQuery, postreviewQuery, getReviewQuery, removeReviewQuery};
+function updateReviewQuery(authorId, text) {
+	return format(`
+		UPDATE public.review SET text = %L 
+		WHERE "authorId" = %L
+	`, text, authorId);
+}
+module.exports = {userQuery, reviewsQuery, postreviewQuery, getReviewQuery, removeReviewQuery, updateReviewQuery};
