@@ -62,6 +62,9 @@
                 .fail(function( jqxhr, settings, exception ) {
                     console.log(exception);
                 });
+                $(".circle").on("error", function(){
+                    $(this).attr('src', `https://cdn.discordapp.com/embed/avatars/${localStorage.getItem(this.id)}.png`);
+                });
                 $('textarea#textarea2').characterCounter();
             });
         </script>

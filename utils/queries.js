@@ -34,11 +34,11 @@ function reviewsQuery(){
 	`);
 }
 
-function postreviewQuery(text, avatar, username, author){
+function postreviewQuery(text, avatar, username, author, discriminator){
 	return format(`
-	INSERT INTO review (text, avatar, "name", "createdAt", "authorId") VALUES (%L, %L, %L, NOW()::timestamp, %L) 
+	INSERT INTO review (text, avatar, "name", "createdAt", "authorId", discriminator) VALUES (%L, %L, %L, NOW()::timestamp, %L, %L) 
 	ON CONFLICT DO NOTHING
-	`,text, avatar, username, author);
+	`,text, avatar, username, author, discriminator);
 }
 function getReviewQuery(authorId) {
 	return format(`

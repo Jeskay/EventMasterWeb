@@ -1,6 +1,6 @@
-function createReview(text, avatar, username, id){
+function createReview(text, avatar, username, id, discriminator){
     let content = `
-    <img src="${avatar}" class="circle">
+    <img id="${discriminator}" src="${avatar}" class="circle">
     <span class="title">${username}</span>
     <p>${text}</p>
     `;
@@ -30,7 +30,7 @@ function loadReviews(){
     .then(data => {
         console.log(data);
         for (let i = 0; i < data.length; i++) {
-            createReview(data[i].text, data[i].avatar, data[i].name, data[i].authorId);
+            createReview(data[i].text, data[i].avatar, data[i].name, data[i].authorId, data[i].discriminator);
         }
         $.getScript( "static/scripts/reviewaction.js");
     })

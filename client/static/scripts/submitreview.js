@@ -4,6 +4,7 @@ function submitReview() {
     const avatar = localStorage.getItem('user_avatar');
     const username = localStorage.getItem('username');
     const token = localStorage.getItem('token');
+    const discriminator = localStorage.get('discriminator');
     const text = document.getElementById('textarea2').value;
     if(text.length < 1) return;
     fetch('./api/postreview', {
@@ -15,7 +16,7 @@ function submitReview() {
             'Content-Type': 'application/json'
         },
         redirect: 'follow',
-        body: JSON.stringify({id: id, token: token, avatar: avatar, username: username, text: text})
+        body: JSON.stringify({id: id, token: token, avatar: avatar, username: username, text: text, discriminator: discriminator})
     }).then(response => {
         console.log(response);
         console.log('success');
