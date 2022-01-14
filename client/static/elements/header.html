@@ -1,7 +1,7 @@
 <ul id="dropdown1" class="dropdown-content grey lighten-2">
     <li><a class="grey-text text-darken-3" href="./reviews.html">Reviews</a></li>
-    <li><a class="grey-text text-darken-3" href="./">Community server</a></li>
-    <li><a class="grey-text text-darken-3" href="#!">Suggestion/Bug reports</a></li>
+    <li><a class="grey-text text-darken-3" href="https://discord.gg/9VyRXgSR">Community server</a></li>
+    <li><a class="grey-text text-darken-3" href="https://forms.gle/c9kBiGfYeyYTUvtq5">Suggestion/Bug reports</a></li>
   </ul> 
 <nav>
     <div class="nav-wrapper grey lighten-2">
@@ -31,8 +31,8 @@
     <li><a href="https://discord.com/api/oauth2/authorize?client_id=488973809185980416&permissions=139645676561&scope=bot%20applications.commands">Invite Bot</a></li>
     <li><a href="./tutorial.html">Tutorial</a></li>
     <li><a href="./reviews.html">Reviews</a></li>
-    <li><a href="./">Community server</a></li>
-    <li><a href="./">Suggestion/Bug reports</a></li>
+    <li><a href="https://discord.gg/9VyRXgSR">Community server</a></li>
+    <li><a href="https://forms.gle/c9kBiGfYeyYTUvtq5">Suggestion/Bug reports</a></li>
     <li><div class="divider"></div></li>
     <li id="mobile_login"><a href="https://discord.com/api/oauth2/authorize?client_id=488973809185980416&redirect_uri=http%3A%2F%2Flocalhost%3A5000%2F&response_type=code&scope=identify">Log in</a></li>
     <li id="mobile_logout" style="display: none;"><a>Log out<i class="material-icons right">exit_to_app</i></a></li>
@@ -50,11 +50,7 @@
         $('.sidenav').sidenav({edge: 'right'});
         $('#mobile_logout').click(function(){
             localStorage.clear();
-            window.location.reload();
-        });
-        $('#mobile_logout').click(function(){
-            localStorage.clear();
-            window.location.reload();
+            window.location.replace('./');
         });      
     });
 </script>

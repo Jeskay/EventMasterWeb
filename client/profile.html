@@ -23,6 +23,9 @@
                             <h5 id="username">@Linus Torvalds</h5>
                         </div>
                     </div>
+                    <div class="row" style="font-size: large;">
+                        <a id="profile_logout" class="waves-effect waves-light btn large black right">Log out<i class="material-icons right">exit_to_app</i></a>
+                    </div>
             </div>
             <ul class="collection with-header">
                 <li class="collection-header center grey lighten-4"><h3>Statistic</h3><h4 class="right" id="played_stat"></h4></li>
@@ -44,6 +47,10 @@
                     })
                     .fail(function( jqxhr, settings, exception ) {
                        console.log(exception);
+                });
+                $('#profile_logout').click( function() {
+                    localStorage.clear();
+                    window.location.replace('./');
                 });    
             });
         </script>

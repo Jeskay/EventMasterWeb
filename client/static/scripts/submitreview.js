@@ -4,7 +4,7 @@ function submitReview() {
     const avatar = localStorage.getItem('user_avatar');
     const username = localStorage.getItem('username');
     const token = localStorage.getItem('token');
-    const discriminator = localStorage.get('discriminator');
+    const discriminator = localStorage.getItem('user_discriminator');
     const text = document.getElementById('textarea2').value;
     if(text.length < 1) return;
     fetch('./api/postreview', {
